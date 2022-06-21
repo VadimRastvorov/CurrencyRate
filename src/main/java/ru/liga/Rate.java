@@ -47,13 +47,11 @@ public class Rate {
         double cursMath = 0;
         for (Curs cur : curs) {
             cursMath += cur.curs;
-            //System.out.println(String.format("%s\t%s\t%s", new SimpleDateFormat("E dd.MM.yyyy").format(cur.date), String.format("%.4f",cur.curs),cur.cdx));
         }
         return cursMath / curs.size();
     }
     //прибавим к дате дни
-    private Date addDays(Date date, int days)
-    {
+    private Date addDays(Date date, int days) {
         Calendar cal = Calendar.getInstance();
         cal.setTime(date);
         cal.add(Calendar.DATE, days);

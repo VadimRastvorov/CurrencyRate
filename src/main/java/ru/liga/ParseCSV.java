@@ -12,20 +12,25 @@ import java.util.Date;
 import java.util.List;
 
 public class ParseCSV {
-    private String filePathEUR = "C:\\HomeWork\\CurrencyRate\\src\\main\\resources\\RC_F01_06_2002_T17_06_2022_EUR.csv";
-    private String filePathTRY = "C:\\HomeWork\\CurrencyRate\\src\\main\\resources\\RC_F01_06_2002_T17_06_2022_TRY.csv";
-    private String filePathUSD = "C:\\HomeWork\\CurrencyRate\\src\\main\\resources\\RC_F01_06_2002_T17_06_2022_USD.csv";
+    private final String filePathEUR = "./src/main/resources/RC_F01_06_2002_T17_06_2022_EUR.csv";
+    private final String filePathTRY = "./src/main/resources/RC_F01_06_2002_T17_06_2022_TRY.csv";
+    private final String filePathUSD = "./src/main/resources/RC_F01_06_2002_T17_06_2022_USD.csv";
 
     //вернем ссылку на файл
     private String filePath(String currency) {
-        if (currency.equals("EUR")) {
-            return filePathEUR;
-        } else if (currency.equals("TRY")) {
-            return filePathTRY;
-        } else if (currency.equals("USD")) {
-            return filePathUSD;
+        String file = "";
+        switch (currency) {
+            case "EUR":
+                file = filePathEUR;
+                break;
+            case "TRY":
+                file = filePathTRY;
+                break;
+            case "USD":
+                file = filePathUSD;
+                break;
         }
-        return null;
+        return file;
     }
 
     //прочитаем файл в List<String[]> начиная с 1, так как 0 - наименования колонок
