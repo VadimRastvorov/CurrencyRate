@@ -41,7 +41,7 @@ public class Rate {
     private Double getCurs(List<Curs> curs) {
         double cursMath = 0;
         for (Curs cur : curs) {
-            cursMath += cur.curs;
+            cursMath += cur.geCurs();
         }
         return cursMath / curs.size();
     }

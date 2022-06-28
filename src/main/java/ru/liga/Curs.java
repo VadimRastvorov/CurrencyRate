@@ -3,15 +3,25 @@ package ru.liga;
 import java.time.LocalDate;
 
 public class Curs {
-    public Integer nominal;
-    public LocalDate date;
-    public Double curs;
-    public String cdx;
+    final Integer nominal;
+    final LocalDate localDate;
+    private final Double curs;
+    private final String cdx;
 
-    public Curs(Integer nominal, LocalDate date, Double curs, String cdx) {
+    public Curs(Integer nominal, LocalDate localDate, Double curs, String cdx) {
         this.nominal = nominal;
-        this.date = date;
+        this.localDate = localDate;
         this.curs = curs;
         this.cdx = cdx;
+    }
+    public LocalDate getLocalDate() {
+        return localDate;
+    }
+    public Double geCurs() {
+        return curs;
+    }
+
+    public String getCdx() {
+        return cdx;
     }
 }

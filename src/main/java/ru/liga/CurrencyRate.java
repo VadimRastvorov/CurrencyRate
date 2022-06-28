@@ -7,7 +7,13 @@ import java.util.Scanner;
 
 public class CurrencyRate {
     static List<String> listError;
-
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        System.out.print("Ввод запроса: ");
+        String inStr = in.nextLine();
+        rateStart(inStr);
+        in.close();
+    }
     private static String[] validateString(String inStr) {
         listError = new ArrayList<>();
         String[] subStr = inStr.split(" ");
@@ -26,14 +32,6 @@ public class CurrencyRate {
         return subStr;
     }
 
-    public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
-        System.out.print("Ввод запроса: ");
-        String inStr = in.nextLine();
-        rateStart(inStr);
-        in.close();
-    }
-
     public static void rateStart(String inStr) {
         String[] subStr = validateString(inStr); //"rate TRY tomorrow");
         if (listError.size() != 0) {
@@ -44,7 +42,7 @@ public class CurrencyRate {
         }
         Rate rate = new Rate();
         for (Curs curs : rate.getRate(subStr[1], subStr[2])) {
-            System.out.printf("%s\t%s%n", curs.date.format(DateTimeFormatter.ofPattern("E dd.MM.yyyy")), String.format("%.4f", curs.curs));
+            System.out.printf("%s\t%s%n", curs.getLocalDate().format(DateTimeFormatter.ofPattern("E dd.MM.yyyy")), String.format("%.4f", curs.geCurs()));
         }
     }
 }

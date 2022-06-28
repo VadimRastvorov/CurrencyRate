@@ -13,7 +13,14 @@ import java.util.List;
 
 public class ParseCSV {
 
-    //������ ������ �� ����
+    public List<Curs> getCurs(String currency) {
+        List<Curs> curs = new ArrayList<>();
+        for (String[] row : getFileData(filePath(currency))) {
+            curs.add(new Curs(getInt(row[0]), getDate(row[1]), getDouble(row[2]), row[3]));
+        }
+        curs.sort((o1, o2) -> o2.getLocalDate().compareTo(o1.getLocalDate()));
+        return curs;
+    }
     private String filePath(String currency) {
         String file = "";
         String filePathEUR = "./src/main/resources/RC_F01_06_2002_T17_06_2022_EUR.csv";
@@ -57,14 +64,7 @@ public class ParseCSV {
         return parseList;
     }
 
-    public List<Curs> getCurs(String currency) {
-        List<Curs> curs = new ArrayList<>();
-        for (String[] row : getFileData(filePath(currency))) {
-            curs.add(new Curs(getInt(row[0]), getDate(row[1]), getDouble(row[2]), row[3]));
-        }
-        curs.sort((o1, o2) -> o2.date.compareTo(o1.date));
-        return curs;
-    }
+
 
     private LocalDate getDate(String dat) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
