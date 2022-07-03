@@ -9,21 +9,21 @@ public class ParseCSVTest {
     ParseCSV parseCSV;
     @BeforeEach
     public void setup() {
-        parseCSV = new ParseCSV();
-    }
+        //parseCSV = new ParseCSV("EUR");
+        }
     @Test
     public void getCursEURTest(){
         assertThat(
-                parseCSV.getCurs("EUR").isEmpty()).isFalse();
+                new ParseCSV("EUR").getCursList().isEmpty()).isFalse();
     }
     @Test
     public void getCursENUTest(){
         assertThat(
-                parseCSV.getCurs("USD").isEmpty()).isFalse();
+                new ParseCSV("USD").getCursList().isEmpty()).isFalse();
     }
     @Test
     public void getCursTRYTest(){
         assertThat(
-                parseCSV.getCurs("TRY").isEmpty()).isFalse();
+                new ParseCSV("TRY").getCursList().isEmpty()).isFalse();
     }
 }

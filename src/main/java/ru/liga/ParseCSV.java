@@ -1,81 +1,76 @@
 package ru.liga;
 
 import au.com.bytecode.opencsv.CSVReader;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Постарался реализовать в этом классе прочтения файла csv и засунул его в массив курсов List<Curs>
+ */
 public class ParseCSV {
+    private final Logger LOGGER = LoggerFactory.getLogger(ParseCSV.class);
+    private final List<Curs> cursList;
 
-    public List<Curs> getCurs(String currency) {
+    public ParseCSV(String currency) {
+        cursList = getCurs(currency);
+    }
+    public List<Curs> getCursList() {
+        return cursList;
+    }
+
+    /**
+     * Функция возвращает структуру List<Curs> лист курсов по введенной валюте
+     * @param currency валюта
+     * @return вернем массив валют List<Curs>
+     */
+    private List<Curs> getCurs(String currency) {
         List<Curs> curs = new ArrayList<>();
-        for (String[] row : getFileData(filePath(currency))) {
-            curs.add(new Curs(getInt(row[0]), getDate(row[1]), getDouble(row[2]), row[3]));
+        FilePath filePath = new FilePath(currency);
+        for (String[] row : getFileData(filePath.getFilePath())) {
+            curs.add(new Curs(row));
         }
         curs.sort((o1, o2) -> o2.getLocalDate().compareTo(o1.getLocalDate()));
         return curs;
     }
-    private String filePath(String currency) {
-        String file = "";
-        String filePathEUR = "./src/main/resources/RC_F01_06_2002_T17_06_2022_EUR.csv";
-        String filePathTRY = "./src/main/resources/RC_F01_06_2002_T17_06_2022_TRY.csv";
-        String filePathUSD = "./src/main/resources/RC_F01_06_2002_T17_06_2022_USD.csv";
-        switch (currency) {
-            case "EUR":
-                file = filePathEUR;
-                break;
-            case "TRY":
-                file = filePathTRY;
-                break;
-            case "USD":
-                file = filePathUSD;
-                break;
-        }
-        return file;
-    }
 
+    /**
+     * Прочитаем файл в массив построчно со 2 элемента так как 1 элемент эта шапка
+     * @param filePath полный путь к файлу
+     * @return массив распарсенных строк List<String[]>
+     */
     private List<String[]> getFileData(String filePath) {
         try {
-            CSVReader reader = new CSVReader(new InputStreamReader(Files.newInputStream(Paths.get(filePath)), "windows-1251"), ';', '"', 1);
-            return  parseUTF8(reader.readAll());
+            InputStreamReader streamReader = new InputStreamReader(Files.newInputStream(Paths.get(filePath)), "windows-1251");
+            CSVReader reader = new CSVReader(streamReader, ';', '"', 1);
+            return parseInUTF8(reader.readAll());
         } catch (IOException e) {
+            LOGGER.error("Ошибка в методе getFileData()");
             throw new RuntimeException(e);
         }
     }
-    private List<String[]> parseUTF8(List<String[]> list) {
+
+    /**
+     * перекодируем строки в UTF_8
+     * @param list массив строк в кодировке (может быть отличной от UTF_8)
+     * @return массив строк в кодировке UTF_8
+     */
+    private List<String[]> parseInUTF8(List<String[]> list) {
         List<String[]> parseList = new ArrayList<>();
-        for(String[] strings : list){
+        for (String[] strings : list) {
             String[] parsStrings = new String[strings.length];
-            for (int i = 0 ; i< strings.length; i++){
-                try {
-                    parsStrings[i] = new String(strings[i].getBytes(StandardCharsets.UTF_8), "windows-1251");
-                }catch (UnsupportedEncodingException e) {
-                    parsStrings[i] = strings[i];
-                }
+            for (int i = 0; i < strings.length; i++) {
+                parsStrings[i] = new String(strings[i].getBytes(StandardCharsets.UTF_8));
             }
             parseList.add(parsStrings);
         }
         return parseList;
-    }
-
-
-
-    private LocalDate getDate(String dat) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
-        return LocalDate.parse(dat, formatter);
-    }
-
-    private Integer getInt(String strToInt) {
-        return Integer.parseInt(strToInt.replace(" ", "").trim());
-    }
-
-    private Double getDouble(String strToDouble) {
-        return Double.parseDouble(strToDouble.replace(" ", "").replace(',', '.').trim());
     }
 }
