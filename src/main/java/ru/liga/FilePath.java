@@ -35,11 +35,12 @@ public class FilePath {
      * @return вернем первый попавшийся файл с валютой
      */
     private String getFileWithCurrency(String currency) {
-        return getAllFilesInDirectory().stream()
+        List<Path> files = getAllFilesInDirectory().stream()
                 .filter(Files::isRegularFile)
                 .filter(p -> p.toString().contains(currency))
-                .collect(Collectors.toList())
-                .get(0).toString();
+                .collect(Collectors.toList());
+        if(files.isEmpty()) return null;
+        return files.get(0).toString();
     }
 
     private List<Path> getAllFilesInDirectory() {

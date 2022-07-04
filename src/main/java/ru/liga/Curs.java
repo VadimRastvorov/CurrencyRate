@@ -29,7 +29,9 @@ public class Curs {
         this.curs = new BigDecimal(removeSpace(row[2]).replace(',', '.'));
         this.cdx = row[3];
     }
-
+    public Integer getNominal() {
+        return nominal;
+    }
     public LocalDate getLocalDate() {
         return localDate;
     }
@@ -43,7 +45,7 @@ public class Curs {
     }
 
     public String toString() {
-        return  String.format("%s\t%s", localDate.format(DateTimeFormatter.ofPattern("E dd.MM.yyyy")), curs);
+        return  String.format("%s - %s", localDate.format(DateTimeFormatter.ofPattern("E dd.MM.yyyy")), curs);
     }
 
     private String removeSpace(String inString) {

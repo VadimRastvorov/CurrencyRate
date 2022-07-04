@@ -12,7 +12,15 @@ public class RateTest {
     public void setup() {
         rate = new Rate();
     }
+    @Test
+    public void getRateTest() {
+        rate.getRate("KZT", "01.01.2050");
+    }
 
+    @Test
+    public void testRateStartNewTest() {
+        rate.rateStart("rate KZT -period week -alg mist");
+    }
     @Test
     public void testRateStartTRYTomorrow() {
         rate.rateStart("rate TRY tomorrow");
