@@ -14,12 +14,28 @@ public class RateTest {
     }
     @Test
     public void getRateTest() {
-        rate.getRate("KZT", "01.01.2050");
+        rate.getRate("KZT", "01.01.2050", "");
+    }
+    @Test
+    public void testRateStartNewTestDate() {
+        rate.rateStart("rate KZT -date 22.02.2030");
     }
 
     @Test
-    public void testRateStartNewTest() {
+    public void testRateStartNewTestWeek() {
         rate.rateStart("rate KZT -period week -alg mist");
+    }
+    @Test
+    public void testRateStartNewTestMoonWeek() {
+        rate.rateStart("rate KZT -period week -alg moon");
+    }
+    @Test
+    public void testRateStartNewTestMoonMonth() {
+        rate.rateStart("rate KZT -period month -alg moon");
+    }
+    @Test
+    public void testRateStartTRYMonth() {
+        rate.rateStart("rate TRY month");
     }
     @Test
     public void testRateStartTRYTomorrow() {
@@ -52,31 +68,31 @@ public class RateTest {
 
     @Test
     public void testGetRateTRYTomorrow() {
-        assertThat(rate.getRate("TRY", "tomorrow").isEmpty()).isFalse();
+        assertThat(rate.getRate("TRY", "tomorrow", "").isEmpty()).isFalse();
     }
 
     @Test
     public void testGetRateTRYWeek() {
-        assertThat(rate.getRate("TRY", "week").isEmpty()).isFalse();
+        assertThat(rate.getRate("TRY", "week", "").isEmpty()).isFalse();
     }
 
     @Test
     public void testGetRateEURTomorrow() {
-        assertThat(rate.getRate("EUR", "tomorrow").isEmpty()).isFalse();
+        assertThat(rate.getRate("EUR", "tomorrow", "").isEmpty()).isFalse();
     }
 
     @Test
     public void testGetRateEURWeek() {
-        assertThat(rate.getRate("EUR", "week").isEmpty()).isFalse();
+        assertThat(rate.getRate("EUR", "week", "").isEmpty()).isFalse();
     }
 
     @Test
     public void testGetRateUSDTomorrow() {
-        assertThat(rate.getRate("USD", "tomorrow").isEmpty()).isFalse();
+        assertThat(rate.getRate("USD", "tomorrow", "").isEmpty()).isFalse();
     }
 
     @Test
     public void testGetRateUSDWeek() {
-        assertThat(rate.getRate("USD", "week").isEmpty()).isFalse();
+        assertThat(rate.getRate("USD", "week", "").isEmpty()).isFalse();
     }
 }

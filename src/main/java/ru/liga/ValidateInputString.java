@@ -1,7 +1,9 @@
 package ru.liga;
+import ru.liga.file.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class ValidateInputString {
     private List<String> listError;
@@ -86,6 +88,10 @@ public class ValidateInputString {
                     break;
             }
         }
+        output = Optional.ofNullable(output).orElse("");
+        algorithm = Optional.ofNullable(algorithm).orElse("");
+        period = Optional.ofNullable(period).orElse("");
+        currency = Optional.ofNullable(currency).orElse("");
     }
 
     private void ValidateInputStringOld(String inStr) {
@@ -105,10 +111,28 @@ public class ValidateInputString {
                 listError.add(String.format("Не нашел файл валюты \"%s\"", inString[1]));
             }
         }
-        if (!(inString[2].equals("tomorrow") || inString[2].equals("week"))) {
-            listError.add("В конце строки должно быть одно из значений \"tomorrow\" \"week\"");
+        if (!(inString[2].equals("tomorrow") || inString[2].equals("week") || inString[2].equals("month") || inString[2].equals("year"))) {
+            listError.add("В конце строки должно быть одно из значений \"tomorrow\" \"week\" \"month\" \"year\"");
         }
-        currency = inString[1];
-        period = inString[2];
+        currency = Optional.ofNullable(inString[1]).orElse("");
+        period = Optional.ofNullable(inString[2]).orElse("");
+        output = Optional.ofNullable(output).orElse("");
+        algorithm = Optional.ofNullable(algorithm).orElse("");
+    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+
+        ValidateInputString validateInputString = (ValidateInputString) o;
+        return
+                currency.equals(validateInputString.currency) &&
+                period.equals(validateInputString.period) &&
+                output.equals(validateInputString.output) &&
+                algorithm.equals(validateInputString.algorithm);
     }
 }

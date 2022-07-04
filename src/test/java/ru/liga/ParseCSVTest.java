@@ -2,6 +2,7 @@ package ru.liga;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import ru.liga.file.ParseCSV;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

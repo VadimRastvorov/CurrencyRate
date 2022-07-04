@@ -1,8 +1,9 @@
-package ru.liga;
+package ru.liga.file;
 
 import au.com.bytecode.opencsv.CSVReader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import ru.liga.Curs;
 
 import java.io.IOException;
 import java.io.InputStreamReader;

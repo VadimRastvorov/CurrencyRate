@@ -1,4 +1,4 @@
-package ru.liga;
+package ru.liga.file;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
