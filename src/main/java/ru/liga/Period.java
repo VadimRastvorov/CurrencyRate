@@ -9,7 +9,4 @@ public enum Period {
     Period(Integer period) {
         this.period = period;
     }
-
-    Period() {
-    }
 }

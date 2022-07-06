@@ -1,4 +1,4 @@
-package ru.liga;
+package ru.liga.linearregression;
 
 /******************************************************************************
  *  Compilation:  javac LinearRegression.java

@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
- * Ищет нужный файл csv в каталоге "./src/main/resources/csv/"
+ *
  */
 public class FilePath {
     private static final String DIRECTORY = "./src/main/resources/csv/";

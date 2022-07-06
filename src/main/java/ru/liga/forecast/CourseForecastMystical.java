@@ -26,6 +26,11 @@ public class CourseForecastMystical {
         }
         return courseForecast;
     }
+
+    public List<Curs> getCourseForecastDayAlgMist(String currency, LocalDate date) {
+        return getActualCursAlgMist(currency, date).subList(0, 1);
+    }
+
     private List<Curs> getActualCursAlgMist(String currency, LocalDate date) {
         ParseCSV parse = new ParseCSV(currency);
         ActualCurs actualCurs = new ActualCurs(parse.getCursList());

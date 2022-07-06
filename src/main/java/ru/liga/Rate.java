@@ -12,7 +12,9 @@ import java.util.List;
 
 public class Rate {
     private static final Logger LOGGER = LoggerFactory.getLogger(Rate.class);
-
+    public StringBuilder messageOut = new StringBuilder();
+    private String dateRegex = "(0?[1-9]|[12][0-9]|3[01])\\.(0?[1-9]|1[012])\\.((?:19|20)[0-9][0-9])$";
+    private DateTimeFormatter datePattern =  DateTimeFormatter.ofPattern("dd.MM.yyyy");
     /**
      * метод запуска основной логики
      *
@@ -23,6 +25,8 @@ public class Rate {
         if (validateInputString.listErrorCheck()) {
             for (String err : validateInputString.getListError()) {
                 LOGGER.error(err);
+                messageOut.append(err);
+                messageOut.append(System.getProperty("line.separator"));
             }
             return;
         }
@@ -31,6 +35,8 @@ public class Rate {
                 validateInputString.getPeriod(),
                 validateInputString.getAlgorithm())) {
             LOGGER.info(curs.toString());
+            messageOut.append(curs);
+            messageOut.append(System.getProperty("line.separator"));
         }
     }
 
@@ -46,19 +52,27 @@ public class Rate {
         Integer periodDay = getPeriodDay(period);
         if (algorithm.equals("moon")) {
             CourseForecastMoon moon = new CourseForecastMoon();
-            return moon.getActualCursAlgMoon(currency, periodDay);
+            if (period.matches(dateRegex)) {
+                return moon.getActualCursDayAlgMoon(currency,LocalDate.parse(period, datePattern));
+            } else {
+                return moon.getActualCursAlgMoon(currency, periodDay);
+            }
         }
         if (algorithm.equals("mist")) {
             CourseForecastMystical mist = new CourseForecastMystical();
-            return mist.getCourseForecastPeriodAlgMist(currency, periodDay);
+            if (period.matches(dateRegex)) {
+                return mist.getCourseForecastDayAlgMist(currency,LocalDate.parse(period, datePattern));
+            }else {
+                return mist.getCourseForecastPeriodAlgMist(currency, periodDay);
+            }
         }
         if (periodDay != 0) {
             CourseForecastWeek week = new CourseForecastWeek();
             return week.getCourseForecastPeriodAlgWeek(currency, periodDay);
         }
-        if (period.matches("(0?[1-9]|[12][0-9]|3[01])\\.(0?[1-9]|1[012])\\.((?:19|20)[0-9][0-9])$")) {
+        if (period.matches(dateRegex)) {
             CourseForecastWeek week = new CourseForecastWeek();
-            return week.getCourseForecastDate(currency, LocalDate.parse(period, DateTimeFormatter.ofPattern("dd.MM.yyyy")));
+            return week.getCourseForecastDate(currency, LocalDate.parse(period, datePattern));
         }
         return null;
     }
