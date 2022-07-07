@@ -2,61 +2,79 @@ package ru.liga;
 
 import au.com.bytecode.opencsv.CSVReader;
 
-import java.io.FileReader;
-import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
 import java.util.List;
 
 public class ParseCSV {
-    private String filePathEUR = "C:\\HomeWork\\CurrencyRate\\src\\main\\resources\\RC_F01_06_2002_T17_06_2022_EUR.csv";
-    private String filePathTRY = "C:\\HomeWork\\CurrencyRate\\src\\main\\resources\\RC_F01_06_2002_T17_06_2022_TRY.csv";
-    private String filePathUSD = "C:\\HomeWork\\CurrencyRate\\src\\main\\resources\\RC_F01_06_2002_T17_06_2022_USD.csv";
 
-    //вернем ссылку на файл
-    private String filePath(String currency) {
-        if (currency.equals("EUR")) {
-            return filePathEUR;
-        } else if (currency.equals("TRY")) {
-            return filePathTRY;
-        } else if (currency.equals("USD")) {
-            return filePathUSD;
-        }
-        return null;
-    }
-
-    //прочитаем файл в List<String[]> начиная с 1, так как 0 - наименования колонок
-    private List<String[]> getFileData(String filePath) throws IOException {
-        CSVReader reader = new CSVReader(new FileReader(filePath), ';', '"', 1);
-        return reader.readAll();
-    }
-
-    //вернем структуру файла
-    public List<Curs> getCurs(String currency) throws ParseException, IOException {
-        List<Curs> curs = new ArrayList<Curs>();
+    public List<Curs> getCurs(String currency) {
+        List<Curs> curs = new ArrayList<>();
         for (String[] row : getFileData(filePath(currency))) {
             curs.add(new Curs(getInt(row[0]), getDate(row[1]), getDouble(row[2]), row[3]));
         }
-        //сортируем лист по дате
-        Collections.sort(curs, (o1, o2) -> o2.date.compareTo(o1.date));
+        curs.sort((o1, o2) -> o2.getLocalDate().compareTo(o1.getLocalDate()));
         return curs;
     }
-
-    //Вернем дату, на вход строка в формате "dd.MM.yyyy"
-    private Date getDate(String dat) throws ParseException {
-        SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy");
-        return formatter.parse(dat);
+    private String filePath(String currency) {
+        String file = "";
+        String filePathEUR = "./src/main/resources/RC_F01_06_2002_T17_06_2022_EUR.csv";
+        String filePathTRY = "./src/main/resources/RC_F01_06_2002_T17_06_2022_TRY.csv";
+        String filePathUSD = "./src/main/resources/RC_F01_06_2002_T17_06_2022_USD.csv";
+        switch (currency) {
+            case "EUR":
+                file = filePathEUR;
+                break;
+            case "TRY":
+                file = filePathTRY;
+                break;
+            case "USD":
+                file = filePathUSD;
+                break;
+        }
+        return file;
     }
 
-    //вернем Integer
+    private List<String[]> getFileData(String filePath) {
+        try {
+            CSVReader reader = new CSVReader(new InputStreamReader(Files.newInputStream(Paths.get(filePath)), "windows-1251"), ';', '"', 1);
+            return  parseUTF8(reader.readAll());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    private List<String[]> parseUTF8(List<String[]> list) {
+        List<String[]> parseList = new ArrayList<>();
+        for(String[] strings : list){
+            String[] parsStrings = new String[strings.length];
+            for (int i = 0 ; i< strings.length; i++){
+                try {
+                    parsStrings[i] = new String(strings[i].getBytes(StandardCharsets.UTF_8), "windows-1251");
+                }catch (UnsupportedEncodingException e) {
+                    parsStrings[i] = strings[i];
+                }
+            }
+            parseList.add(parsStrings);
+        }
+        return parseList;
+    }
+
+
+
+    private LocalDate getDate(String dat) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+        return LocalDate.parse(dat, formatter);
+    }
+
     private Integer getInt(String strToInt) {
         return Integer.parseInt(strToInt.replace(" ", "").trim());
     }
 
-    //вернем Double
     private Double getDouble(String strToDouble) {
         return Double.parseDouble(strToDouble.replace(" ", "").replace(',', '.').trim());
     }

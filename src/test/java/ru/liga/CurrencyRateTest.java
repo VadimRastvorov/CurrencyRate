@@ -1,18 +1,15 @@
 package ru.liga;
 
-import org.junit.Test;
-
-import java.io.IOException;
-import java.text.ParseException;
+import org.junit.jupiter.api.Test;
 
 public class CurrencyRateTest {
     @Test
-    public void testCurrencyRate() throws ParseException, IOException {
-        CurrencyRate.RateStart("rate TRY tomorrow");
-        CurrencyRate.RateStart("rate TRY week");
-        CurrencyRate.RateStart("rate USD tomorrow");
-        CurrencyRate.RateStart("rate USD week");
-        CurrencyRate.RateStart("rate EUR tomorrow");
-        CurrencyRate.RateStart("rate EUR week");
+    public void testCurrencyRate() {
+        CurrencyRate.rateStart("rate TRY tomorrow");
+        CurrencyRate.rateStart("rate TRY week");
+        CurrencyRate.rateStart("rate USD tomorrow");
+        CurrencyRate.rateStart("rate USD week");
+        CurrencyRate.rateStart("rate EUR tomorrow");
+        CurrencyRate.rateStart("rate EUR week");
     }
 }
