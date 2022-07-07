@@ -1,0 +1,399 @@
+07:25:55.951  285  [main] INFO  ru.liga.CurrencyRate - ...
+07:25:55.954  288  [main] DEBUG ru.liga.CurrencyRate - ...
+07:25:55.954  288  [main] DEBUG ru.liga.CurrencyRate -  myArg=[[Ljava.lang.String;@1725dc0f]
+07:44:14.061  276  [main] INFO  ru.liga.CurrencyRate - ...
+07:44:14.065  280  [main] DEBUG ru.liga.CurrencyRate - ...
+07:51:41.631  265  [main] ERROR ru.liga.CurrencyRate - Ошибка в методе getFileData() {}
+java.nio.file.NoSuchFileException: .\src\main\resources\scv\RC_F01_06_2002_T17_06_2022_TRY.csv
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:85)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108)
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(WindowsFileSystemProvider.java:235)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:371)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:422)
+	at java.base/java.nio.file.spi.FileSystemProvider.newInputStream(FileSystemProvider.java:420)
+	at java.base/java.nio.file.Files.newInputStream(Files.java:156)
+	at ru.liga.ParseCSV.getFileData(ParseCSV.java:52)
+	at ru.liga.ParseCSV.getCurs(ParseCSV.java:24)
+	at ru.liga.Rate.getRateTomorrow(Rate.java:24)
+	at ru.liga.Rate.getRate(Rate.java:14)
+	at ru.liga.CurrencyRate.rateStart(CurrencyRate.java:62)
+	at ru.liga.CurrencyRateTest.testCurrencyRate(CurrencyRateTest.java:8)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:725)
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:149)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:140)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:84)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(ExecutableInvoker.java:115)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker.lambda$invoke$0(ExecutableInvoker.java:105)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker.invoke(ExecutableInvoker.java:104)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker.invoke(ExecutableInvoker.java:98)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:214)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:210)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:135)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:66)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:151)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:107)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:88)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:54)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:67)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:52)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:114)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:86)
+	at org.junit.platform.launcher.core.DefaultLauncherSession$DelegatingLauncher.execute(DefaultLauncherSession.java:86)
+	at org.junit.platform.launcher.core.SessionPerRequestLauncher.execute(SessionPerRequestLauncher.java:53)
+	at com.intellij.junit5.JUnit5IdeaTestRunner.startRunnerWithArgs(JUnit5IdeaTestRunner.java:71)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater$1.execute(IdeaTestRunner.java:38)
+	at com.intellij.rt.execution.junit.TestsRepeater.repeat(TestsRepeater.java:11)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:35)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:235)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:54)
+08:06:04.839  31376 [main] ERROR ru.liga.ParseCSV - Ошибка в методе getFileData() {}
+java.nio.file.NoSuchFileException: .\src\main\resources\scv\RC_F01_06_2002_T17_06_2022_TRY.csv
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:85)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108)
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(WindowsFileSystemProvider.java:235)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:371)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:422)
+	at java.base/java.nio.file.spi.FileSystemProvider.newInputStream(FileSystemProvider.java:420)
+	at java.base/java.nio.file.Files.newInputStream(Files.java:156)
+	at ru.liga.ParseCSV.getFileData(ParseCSV.java:69)
+	at ru.liga.ParseCSV.getCurs(ParseCSV.java:28)
+	at ru.liga.Rate.getRateTomorrow(Rate.java:24)
+	at ru.liga.Rate.getRate(Rate.java:14)
+	at ru.liga.CurrencyRate.rateStart(CurrencyRate.java:50)
+	at ru.liga.CurrencyRateTest.testCurrencyRate(CurrencyRateTest.java:8)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:725)
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:149)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:140)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:84)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(ExecutableInvoker.java:115)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker.lambda$invoke$0(ExecutableInvoker.java:105)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker.invoke(ExecutableInvoker.java:104)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker.invoke(ExecutableInvoker.java:98)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:214)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:210)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:135)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:66)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:151)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:107)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:88)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:54)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:67)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:52)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:114)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:86)
+	at org.junit.platform.launcher.core.DefaultLauncherSession$DelegatingLauncher.execute(DefaultLauncherSession.java:86)
+	at org.junit.platform.launcher.core.SessionPerRequestLauncher.execute(SessionPerRequestLauncher.java:53)
+	at com.intellij.junit5.JUnit5IdeaTestRunner.startRunnerWithArgs(JUnit5IdeaTestRunner.java:71)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater$1.execute(IdeaTestRunner.java:38)
+	at com.intellij.rt.execution.junit.TestsRepeater.repeat(TestsRepeater.java:11)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:35)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:235)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:54)
+08:10:05.405  47566 [main] ERROR ru.liga.ParseCSV - Ошибка в методе getFileData() {}
+java.nio.file.NoSuchFileException: RC_F01_06_2002_T17_06_2022_TRY.csv
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:85)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103)
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108)
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(WindowsFileSystemProvider.java:235)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:371)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:422)
+	at java.base/java.nio.file.spi.FileSystemProvider.newInputStream(FileSystemProvider.java:420)
+	at java.base/java.nio.file.Files.newInputStream(Files.java:156)
+	at ru.liga.ParseCSV.getFileData(ParseCSV.java:52)
+	at ru.liga.ParseCSV.getCurs(ParseCSV.java:28)
+	at ru.liga.Rate.getRateTomorrow(Rate.java:24)
+	at ru.liga.Rate.getRate(Rate.java:14)
+	at ru.liga.CurrencyRate.rateStart(CurrencyRate.java:50)
+	at ru.liga.CurrencyRateTest.testCurrencyRate(CurrencyRateTest.java:8)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:725)
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:149)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:140)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:84)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(ExecutableInvoker.java:115)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker.lambda$invoke$0(ExecutableInvoker.java:105)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker.invoke(ExecutableInvoker.java:104)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker.invoke(ExecutableInvoker.java:98)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:214)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:210)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:135)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:66)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:151)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:107)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:88)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:54)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:67)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:52)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:114)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:86)
+	at org.junit.platform.launcher.core.DefaultLauncherSession$DelegatingLauncher.execute(DefaultLauncherSession.java:86)
+	at org.junit.platform.launcher.core.SessionPerRequestLauncher.execute(SessionPerRequestLauncher.java:53)
+	at com.intellij.junit5.JUnit5IdeaTestRunner.startRunnerWithArgs(JUnit5IdeaTestRunner.java:71)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater$1.execute(IdeaTestRunner.java:38)
+	at com.intellij.rt.execution.junit.TestsRepeater.repeat(TestsRepeater.java:11)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:35)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:235)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:54)
+09:43:45.258  374  [main] INFO  ru.liga.CurrencyRate - %s	%s%n
+09:43:45.335  451  [main] INFO  ru.liga.CurrencyRate - %s	%s%n
+09:43:45.335  451  [main] INFO  ru.liga.CurrencyRate - %s	%s%n
+09:43:45.335  451  [main] INFO  ru.liga.CurrencyRate - %s	%s%n
+09:43:45.335  451  [main] INFO  ru.liga.CurrencyRate - %s	%s%n
+09:43:45.335  451  [main] INFO  ru.liga.CurrencyRate - %s	%s%n
+09:43:45.336  452  [main] INFO  ru.liga.CurrencyRate - %s	%s%n
+09:43:45.336  452  [main] INFO  ru.liga.CurrencyRate - %s	%s%n
+09:43:45.404  520  [main] INFO  ru.liga.CurrencyRate - %s	%s%n
+09:43:45.461  577  [main] INFO  ru.liga.CurrencyRate - %s	%s%n
+09:43:45.461  577  [main] INFO  ru.liga.CurrencyRate - %s	%s%n
+09:43:45.461  577  [main] INFO  ru.liga.CurrencyRate - %s	%s%n
+09:43:45.462  578  [main] INFO  ru.liga.CurrencyRate - %s	%s%n
+09:43:45.462  578  [main] INFO  ru.liga.CurrencyRate - %s	%s%n
+09:43:45.462  578  [main] INFO  ru.liga.CurrencyRate - %s	%s%n
+09:43:45.462  578  [main] INFO  ru.liga.CurrencyRate - %s	%s%n
+09:43:45.495  611  [main] INFO  ru.liga.CurrencyRate - %s	%s%n
+09:43:45.522  638  [main] INFO  ru.liga.CurrencyRate - %s	%s%n
+09:43:45.522  638  [main] INFO  ru.liga.CurrencyRate - %s	%s%n
+09:43:45.522  638  [main] INFO  ru.liga.CurrencyRate - %s	%s%n
+09:43:45.523  639  [main] INFO  ru.liga.CurrencyRate - %s	%s%n
+09:43:45.523  639  [main] INFO  ru.liga.CurrencyRate - %s	%s%n
+09:43:45.523  639  [main] INFO  ru.liga.CurrencyRate - %s	%s%n
+09:43:45.523  639  [main] INFO  ru.liga.CurrencyRate - %s	%s%n
+09:48:54.362  398  [main] INFO  ru.liga.CurrencyRate - вс 03.07.2022	34.1940
+
+09:48:54.438  474  [main] INFO  ru.liga.CurrencyRate - вс 03.07.2022	34.1940
+
+09:48:54.438  474  [main] INFO  ru.liga.CurrencyRate - пн 04.07.2022	33.8247
+
+09:48:54.438  474  [main] INFO  ru.liga.CurrencyRate - вт 05.07.2022	33.5119
+
+09:48:54.438  474  [main] INFO  ru.liga.CurrencyRate - ср 06.07.2022	33.4236
+
+09:48:54.438  474  [main] INFO  ru.liga.CurrencyRate - чт 07.07.2022	33.4035
+
+09:48:54.439  475  [main] INFO  ru.liga.CurrencyRate - пт 08.07.2022	33.4472
+
+09:48:54.439  475  [main] INFO  ru.liga.CurrencyRate - сб 09.07.2022	33.5328
+
+09:48:54.503  539  [main] INFO  ru.liga.CurrencyRate - вс 03.07.2022	58.2823
+
+09:48:54.558  594  [main] INFO  ru.liga.CurrencyRate - вс 03.07.2022	58.2823
+
+09:48:54.559  595  [main] INFO  ru.liga.CurrencyRate - пн 04.07.2022	57.9003
+
+09:48:54.559  595  [main] INFO  ru.liga.CurrencyRate - вт 05.07.2022	57.5677
+
+09:48:54.559  595  [main] INFO  ru.liga.CurrencyRate - ср 06.07.2022	57.4503
+
+09:48:54.559  595  [main] INFO  ru.liga.CurrencyRate - чт 07.07.2022	57.4035
+
+09:48:54.559  595  [main] INFO  ru.liga.CurrencyRate - пт 08.07.2022	57.4479
+
+09:48:54.560  596  [main] INFO  ru.liga.CurrencyRate - сб 09.07.2022	57.5602
+
+09:48:54.588  624  [main] INFO  ru.liga.CurrencyRate - вс 03.07.2022	61.2703
+
+09:48:54.633  669  [main] INFO  ru.liga.CurrencyRate - вс 03.07.2022	61.2703
+
+09:48:54.634  670  [main] INFO  ru.liga.CurrencyRate - пн 04.07.2022	60.7989
+
+09:48:54.634  670  [main] INFO  ru.liga.CurrencyRate - вт 05.07.2022	60.3505
+
+09:48:54.635  671  [main] INFO  ru.liga.CurrencyRate - ср 06.07.2022	60.1015
+
+09:48:54.635  671  [main] INFO  ru.liga.CurrencyRate - чт 07.07.2022	59.9781
+
+09:48:54.635  671  [main] INFO  ru.liga.CurrencyRate - пт 08.07.2022	60.0824
+
+09:48:54.635  671  [main] INFO  ru.liga.CurrencyRate - сб 09.07.2022	60.2198
+
+09:50:15.224  413  [main] INFO  ru.liga.CurrencyRate - вс 03.07.2022	34.1940
+09:50:15.308  497  [main] INFO  ru.liga.CurrencyRate - вс 03.07.2022	34.1940
+09:50:15.309  498  [main] INFO  ru.liga.CurrencyRate - пн 04.07.2022	33.8247
+09:50:15.310  499  [main] INFO  ru.liga.CurrencyRate - вт 05.07.2022	33.5119
+09:50:15.310  499  [main] INFO  ru.liga.CurrencyRate - ср 06.07.2022	33.4236
+09:50:15.311  500  [main] INFO  ru.liga.CurrencyRate - чт 07.07.2022	33.4035
+09:50:15.312  501  [main] INFO  ru.liga.CurrencyRate - пт 08.07.2022	33.4472
+09:50:15.313  502  [main] INFO  ru.liga.CurrencyRate - сб 09.07.2022	33.5328
+09:50:15.370  559  [main] INFO  ru.liga.CurrencyRate - вс 03.07.2022	58.2823
+09:50:15.409  598  [main] INFO  ru.liga.CurrencyRate - вс 03.07.2022	58.2823
+09:50:15.410  599  [main] INFO  ru.liga.CurrencyRate - пн 04.07.2022	57.9003
+09:50:15.411  600  [main] INFO  ru.liga.CurrencyRate - вт 05.07.2022	57.5677
+09:50:15.411  600  [main] INFO  ru.liga.CurrencyRate - ср 06.07.2022	57.4503
+09:50:15.412  601  [main] INFO  ru.liga.CurrencyRate - чт 07.07.2022	57.4035
+09:50:15.412  601  [main] INFO  ru.liga.CurrencyRate - пт 08.07.2022	57.4479
+09:50:15.413  602  [main] INFO  ru.liga.CurrencyRate - сб 09.07.2022	57.5602
+09:50:15.447  636  [main] INFO  ru.liga.CurrencyRate - вс 03.07.2022	61.2703
+09:50:15.486  675  [main] INFO  ru.liga.CurrencyRate - вс 03.07.2022	61.2703
+09:50:15.486  675  [main] INFO  ru.liga.CurrencyRate - пн 04.07.2022	60.7989
+09:50:15.487  676  [main] INFO  ru.liga.CurrencyRate - вт 05.07.2022	60.3505
+09:50:15.488  677  [main] INFO  ru.liga.CurrencyRate - ср 06.07.2022	60.1015
+09:50:15.489  678  [main] INFO  ru.liga.CurrencyRate - чт 07.07.2022	59.9781
+09:50:15.490  679  [main] INFO  ru.liga.CurrencyRate - пт 08.07.2022	60.0824
+09:50:15.491  680  [main] INFO  ru.liga.CurrencyRate - сб 09.07.2022	60.2198
+10:39:10.949  276  [main] DEBUG ru.liga.CurrencyRate - Запустили програму
+10:39:14.599  3926 [main] INFO  ru.liga.Rate - вс 03.07.2022	58.2823
+10:39:14.599  3926 [main] INFO  ru.liga.Rate - вс 03.07.2022	57.9003
+10:39:14.600  3927 [main] INFO  ru.liga.Rate - вс 03.07.2022	57.5677
+10:39:14.600  3927 [main] INFO  ru.liga.Rate - вс 03.07.2022	57.4503
+10:39:14.600  3927 [main] INFO  ru.liga.Rate - вс 03.07.2022	57.4035
+10:39:14.600  3927 [main] INFO  ru.liga.Rate - вс 03.07.2022	57.4479
+10:39:14.600  3927 [main] INFO  ru.liga.Rate - вс 03.07.2022	57.5602
+10:42:00.854  271  [main] DEBUG ru.liga.CurrencyRate - Запустили програму
+10:42:04.767  4184 [main] INFO  ru.liga.Rate - вс 03.07.2022	58.2823
+10:42:04.768  4185 [main] INFO  ru.liga.Rate - пн 04.07.2022	57.9003
+10:42:04.768  4185 [main] INFO  ru.liga.Rate - вт 05.07.2022	57.5677
+10:42:04.768  4185 [main] INFO  ru.liga.Rate - ср 06.07.2022	57.4503
+10:42:04.768  4185 [main] INFO  ru.liga.Rate - чт 07.07.2022	57.4035
+10:42:04.769  4186 [main] INFO  ru.liga.Rate - пт 08.07.2022	57.4479
+10:42:04.769  4186 [main] INFO  ru.liga.Rate - сб 09.07.2022	57.5602
+10:47:25.223  271  [main] DEBUG ru.liga.CurrencyRate - Запустили програму
+10:47:36.171  11219 [main] INFO  ru.liga.Rate - вс 03.07.2022	58.2823
+10:47:36.171  11219 [main] INFO  ru.liga.Rate - пн 04.07.2022	57.9003
+10:47:36.171  11219 [main] INFO  ru.liga.Rate - вт 05.07.2022	57.5677
+10:47:36.171  11219 [main] INFO  ru.liga.Rate - ср 06.07.2022	57.4503
+10:47:36.172  11220 [main] INFO  ru.liga.Rate - чт 07.07.2022	57.4035
+10:47:36.172  11220 [main] INFO  ru.liga.Rate - пт 08.07.2022	57.4479
+10:47:36.172  11220 [main] INFO  ru.liga.Rate - сб 09.07.2022	57.5602
+19:06:50.829  247  [main] DEBUG ru.liga.CurrencyRate - Запустили програму
+19:07:04.244  13662 [main] INFO  ru.liga.Rate - вс 03.07.2022	58.2823
+19:07:04.244  13662 [main] INFO  ru.liga.Rate - пн 04.07.2022	57.9003
+19:07:04.245  13663 [main] INFO  ru.liga.Rate - вт 05.07.2022	57.5677
+19:07:04.245  13663 [main] INFO  ru.liga.Rate - ср 06.07.2022	57.4503
+19:07:04.245  13663 [main] INFO  ru.liga.Rate - чт 07.07.2022	57.4035
+19:07:04.245  13663 [main] INFO  ru.liga.Rate - пт 08.07.2022	57.4479
+19:07:04.245  13663 [main] INFO  ru.liga.Rate - сб 09.07.2022	57.5602
+19:41:57.710  301  [main] INFO  ru.liga.FilePath - Подобрали файл из ресурсов .\src\main\resources\csv\RC_F01_06_2002_T17_06_2022_TRY.csv
+20:00:07.781  237  [main] INFO  ru.liga.FilePath - Подобрали файл из ресурсов .\src\main\resources\csv\RC_F01_06_2002_T17_06_2022_TRY.csv
+20:00:18.224  241  [main] INFO  ru.liga.FilePath - Подобрали файл из ресурсов .\src\main\resources\csv\RC_F01_06_2002_T17_06_2022_TRY.csv
+20:01:08.278  251  [main] INFO  ru.liga.FilePath - Подобрали файл из ресурсов .\src\main\resources\csv\RC_F01_06_2002_T17_06_2022_TRY.csv
+20:01:24.629  234  [main] INFO  ru.liga.FilePath - Подобрали файл из ресурсов .\src\main\resources\csv\RC_F01_06_2002_T17_06_2022_TRY.csv
+20:02:21.853  232  [main] INFO  ru.liga.FilePath - Подобрали файл из ресурсов .\src\main\resources\csv\RC_F01_06_2002_T17_06_2022_EUR.csv
+20:02:21.990  369  [main] INFO  ru.liga.FilePath - Подобрали файл из ресурсов .\src\main\resources\csv\RC_F01_06_2002_T17_06_2022_USD.csv
+20:02:27.824  240  [main] INFO  ru.liga.FilePath - Подобрали файл из ресурсов .\src\main\resources\csv\RC_F01_06_2002_T17_06_2022_EUR.csv
+20:02:27.969  385  [main] INFO  ru.liga.FilePath - Подобрали файл из ресурсов .\src\main\resources\csv\RC_F01_06_2002_T17_06_2022_TRY.csv
+20:02:46.143  224  [main] INFO  ru.liga.FilePath - Подобрали файл из ресурсов .\src\main\resources\csv\RC_F01_06_2002_T17_06_2022_TRY.csv
+20:06:08.302  262  [main] INFO  ru.liga.FilePath - Подобрали файл из ресурсов .\src\main\resources\csv\RC_F01_06_2002_T17_06_2022_TRY.csv
