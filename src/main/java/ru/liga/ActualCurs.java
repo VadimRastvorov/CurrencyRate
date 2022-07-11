@@ -1,6 +1,7 @@
 package ru.liga;
 
 import java.time.LocalDate;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -17,7 +18,7 @@ public class ActualCurs {
 
     private List<Curs> actualCursList(List<Curs> cursList) {
         List<Curs> actualCursList = cursList.stream()
-                .sorted((c1, c2) -> c1.getLocalDate().compareTo(c2.getLocalDate()))
+                .sorted(Comparator.comparing(Curs::getLocalDate))
                 .collect(Collectors.toList());
         for (int i = 1; i < actualCursList.size(); i++) {
             LocalDate day = actualCursList.get(i - 1).getLocalDate().plusDays(1);

@@ -8,24 +8,28 @@ import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
 import ru.liga.Rate;
+import ru.liga.configuration.LoadProperties;
 
 public class TelegramBot extends TelegramLongPollingBot {
+
+    private LoadProperties properties;
 
     @SneakyThrows
     public static void main(String[] args) {
         TelegramBot bot = new TelegramBot();
+        bot.properties = new LoadProperties();
         TelegramBotsApi telegramBotsApi = new TelegramBotsApi(DefaultBotSession.class);
         telegramBotsApi.registerBot(bot);
     }
 
     @Override
     public String getBotUsername() {
-        return "@vadim_currency_rate_bot";
+        return properties.getBotUsername();
     }
 
     @Override
     public String getBotToken() {
-        return "5574348245:AAHwJZ579w0bPIl5JfxDyQXLKH0jMgYTN4k";
+        return properties.getBotToken();
     }
 
     @Override

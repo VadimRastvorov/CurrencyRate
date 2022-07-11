@@ -21,7 +21,6 @@ public class FilePath {
 
     public FilePath(String currency) {
         file = getFileWithCurrency(currency);
-        LOGGER.info("Подобрали файл из ресурсов {}", file);
     }
 
     public String getFilePath() {
@@ -39,7 +38,9 @@ public class FilePath {
                 .filter(Files::isRegularFile)
                 .filter(p -> p.toString().contains(currency))
                 .collect(Collectors.toList());
-        if(files.isEmpty()) return null;
+        if (files.isEmpty()) {
+            return null;
+        }
         return files.get(0).toString();
     }
 
@@ -47,7 +48,7 @@ public class FilePath {
         try (Stream<Path> paths = Files.walk(Paths.get(DIRECTORY))) {
             return paths.collect(Collectors.toList());
         } catch (IOException e) {
-            LOGGER.error("Ошибка в конструкторе FilePath(), при чтении каталога {}", e);
+            LOGGER.error("Ошибка в конструкторе FilePath(), при чтении каталога %s ", e);
             throw new RuntimeException(e);
         }
     }

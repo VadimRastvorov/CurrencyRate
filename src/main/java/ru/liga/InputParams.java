@@ -1,8 +1,14 @@
 package ru.liga;
 
-import java.util.List;
-import java.util.Optional;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
+import java.util.List;
+
+@Getter
+@Setter
+@AllArgsConstructor
 public class InputParams {
     private final List<String> listError;
     private final String currency;
@@ -10,15 +16,6 @@ public class InputParams {
     private final String period;
     private final String algorithm;
     private final String output;
-
-    public InputParams(List<String> listError, String currency, String period, String algorithm, String output) {
-        this.listError = listError;
-        this.currency = Optional.ofNullable(currency).orElse("");
-        this.period = Optional.ofNullable(period).orElse("");
-        this.algorithm = Optional.ofNullable(algorithm).orElse("");
-        this.output = Optional.ofNullable(output).orElse("");
-        this.currencies = Optional.ofNullable(currency).orElse("").split(",");
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -34,5 +31,16 @@ public class InputParams {
                 period.equals(inputParams.period) &&
                 output.equals(inputParams.output) &&
                 algorithm.equals(inputParams.algorithm);
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((currency == null) ? 0 : currency.hashCode());
+        result = prime * result + ((period == null) ? 0 : period.hashCode());
+        result = prime * result + ((output == null) ? 0 : output.hashCode());
+        result = prime * result + ((algorithm == null) ? 0 : algorithm.hashCode());
+        return result;
     }
 }
