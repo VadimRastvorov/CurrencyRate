@@ -27,9 +27,9 @@ public class CourseForecastMoon implements CourseForecast{
         LocalDate inDate = date;
         LocalDate actualDate = actualCurs.actualCursList()
                 .stream()
-                .map(s -> s.getLocalDate())
+                .map(Curs::getLocalDate)
                 .max(LocalDate::compareTo)
-                .get();
+                .orElse(LocalDate.now());
         while (inDate.isAfter(actualDate)) {
             inDate = inDate.minusYears(1);
         }

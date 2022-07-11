@@ -2,8 +2,6 @@ package ru.liga.file;
 
 import au.com.bytecode.opencsv.CSVReader;
 import lombok.SneakyThrows;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import ru.liga.Curs;
 
 import java.io.InputStreamReader;
@@ -15,7 +13,6 @@ import java.util.*;
  * Прочтение файла csv и засунул его в массив курсов List<Curs>
  */
 public class ParseCSV {
-    private final Logger LOGGER = LoggerFactory.getLogger(ParseCSV.class);
     private final List<Curs> cursList;
 
     public ParseCSV(String currency) {
@@ -38,7 +35,6 @@ public class ParseCSV {
         List<String[]> csvData = getFileData(filePath.getFilePath());
         String[] csvHeader = csvData.get(0);
         csvData.subList(1, csvData.size())
-                .stream()
                 .forEach(row -> curs.add(getCursFromHeader(row,csvHeader)));
         curs.sort(Comparator.comparing(Curs::getLocalDate).reversed());
         return curs;

@@ -21,7 +21,7 @@ public enum Period {
     public final String period;
     public final Integer dayCount;
 
-    private Period(String label, int dayCount) {
+    Period(String label, int dayCount) {
         this.period = label;
         this.dayCount = dayCount;
     }
