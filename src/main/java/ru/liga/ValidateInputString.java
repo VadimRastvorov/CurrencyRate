@@ -13,6 +13,8 @@ import java.util.Optional;
 public class ValidateInputString {
     private List<String> listError;
     private String currency;
+
+    private String[] currencies;
     private String period;
     private String algorithm;
     private String output;
@@ -43,10 +45,10 @@ public class ValidateInputString {
         if (!inString[0].equals("rate")) {
             listError.add("Строка должна начинатся с \"rate\"");
         }
-        if ((inString[1].length() != 3 && inString[1].length() != 7)) {
+        if ((inString[1].length() != 3 && inString[1].length() != 7 && inString[1].length() != 11 && inString[1].length() != 15 && inString[1].length() != 19)) {
             listError.add("После \"rate \" должно быть одно из значений Банковского кода из 3 букв");
         } else {
-            String[] currencies = inString[1].split(",");
+            currencies = inString[1].split(",");
             currency = currencies[0];
             for (String curr : currencies) {
                 FilePath filePath = new FilePath(curr);

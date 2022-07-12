@@ -6,13 +6,17 @@ import ru.liga.forecast.*;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Rate {
     private static final Logger LOGGER = LoggerFactory.getLogger(Rate.class);
     public StringBuilder messageOut = new StringBuilder();
     private final DateTimeFormatter datePattern = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+
+    public List<Curs> cursList;
+    public Map<String, List<Curs>> mapListCurs = new HashMap<>();
 
     /**
      * метод запуска основной логики
@@ -28,7 +32,8 @@ public class Rate {
             }
             return;
         }
-        for (Curs curs : getRate(validateInputString.getCurrency(), validateInputString.getPeriod(), validateInputString.getAlgorithm())) {
+        cursList = getRate(validateInputString.getPeriod(), validateInputString.getAlgorithm(), validateInputString.getCurrencies());
+        for (Curs curs : cursList) {
             messageOut.append(curs).append(System.getProperty("line.separator"));
         }
     }
@@ -36,45 +41,38 @@ public class Rate {
     /**
      * метод возвращает данные из запроса
      *
-     * @param currency валюта
+     * @param currencies валюты
      * @param period   период
      * @return Возвращает лист курсов
      */
-    public List<Curs> getRate(String currency, String period, String algorithm) {
+    public List<Curs> getRate(String period, String algorithm, String[] currencies) {
 
         Integer periodDay = Period.valueOfPeriod(period).dayCount;
         String dateRegex = "(0?[1-9]|[12]\\d|3[01])\\.(0?[1-9]|1[012])\\.((?:19|20)\\d\\d)$";
-        if (algorithm.equals("moon")) {
-            CourseForecast courseForecast = new CourseForecastMoon();
+        for (String currency : currencies) {
+            CourseForecast courseForecast;
+            switch (algorithm) {
+                case "moon":
+                    courseForecast = new CourseForecastMoon();
+                    break;
+                case "mist":
+                    courseForecast = new CourseForecastMystical();
+                    break;
+                case "internet":
+                    courseForecast = new CourseForecastLinearReg();
+                    break;
+                case "week":
+                default:
+                    courseForecast = new CourseForecastWeek();
+                    break;
+
+            }
             if (period.matches(dateRegex)) {
-                return courseForecast.getCourseForecastDay(currency, LocalDate.parse(period, datePattern));
+                mapListCurs.put(currency, courseForecast.getCourseForecastDay(currency, LocalDate.parse(period, datePattern)));
             } else {
-                return courseForecast.getCourseForecastPeriod(currency, periodDay);
+                mapListCurs.put(currency, courseForecast.getCourseForecastPeriod(currency, periodDay));
             }
         }
-        if (algorithm.equals("mist")) {
-            CourseForecast courseForecast = new CourseForecastMystical();
-            if (period.matches(dateRegex)) {
-                return courseForecast.getCourseForecastDay(currency, LocalDate.parse(period, datePattern));
-            } else {
-                return courseForecast.getCourseForecastPeriod(currency, periodDay);
-            }
-        }if (algorithm.equals("internet")) {
-            CourseForecast courseForecast = new CourseForecastLinearReg();
-            if (period.matches(dateRegex)) {
-                return courseForecast.getCourseForecastDay(currency, LocalDate.parse(period, datePattern));
-            } else {
-                return courseForecast.getCourseForecastPeriod(currency, periodDay);
-            }
-        }
-        if (periodDay != 0) {
-            CourseForecast week = new CourseForecastWeek();
-            return week.getCourseForecastPeriod(currency, periodDay);
-        }
-        if (period.matches(dateRegex)) {
-            CourseForecast week = new CourseForecastWeek();
-            return week.getCourseForecastDay(currency, LocalDate.parse(period, datePattern));
-        }
-        return new ArrayList<>();
+        return mapListCurs.get(currencies[0]);
     }
 }

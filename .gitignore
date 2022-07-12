@@ -1,8 +1,8 @@
 # Project exclude paths
 /target/
-/.idea/
 *.log
 /src/main/resources/logs/
 /src/main/resources/OLD/
 /src/test/resources/logs/
 /src/main/resources/app.properties
+.idea/

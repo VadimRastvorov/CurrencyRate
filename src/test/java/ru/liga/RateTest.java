@@ -14,7 +14,7 @@ public class RateTest {
     }
     @Test
     public void getRateTest() {
-        rate.getRate("KZT", "01.01.2050", "");
+        rate.getRate("01.01.2050", "", new String[]{"KZT"});
     }
     @Test
     public void testRateStartNewTestDate() {
@@ -68,31 +68,31 @@ public class RateTest {
 
     @Test
     public void testGetRateTRYTomorrow() {
-        assertThat(rate.getRate("TRY", "tomorrow", "").isEmpty()).isFalse();
+        assertThat(rate.getRate("tomorrow", "", new String[]{"TRY"}).isEmpty()).isFalse();
     }
 
     @Test
     public void testGetRateTRYWeek() {
-        assertThat(rate.getRate("TRY", "week", "").isEmpty()).isFalse();
+        assertThat(rate.getRate("week", "", new String[]{"TRY"}).isEmpty()).isFalse();
     }
 
     @Test
     public void testGetRateEURTomorrow() {
-        assertThat(rate.getRate("EUR", "tomorrow", "").isEmpty()).isFalse();
+        assertThat(rate.getRate("tomorrow", "", new String[]{"EUR"}).isEmpty()).isFalse();
     }
 
     @Test
     public void testGetRateEURWeek() {
-        assertThat(rate.getRate("EUR", "week", "").isEmpty()).isFalse();
+        assertThat(rate.getRate("week", "", new String[]{"EUR"}).isEmpty()).isFalse();
     }
 
     @Test
     public void testGetRateUSDTomorrow() {
-        assertThat(rate.getRate("USD", "tomorrow", "").isEmpty()).isFalse();
+        assertThat(rate.getRate("tomorrow", "", new String[]{"USD"}).isEmpty()).isFalse();
     }
 
     @Test
     public void testGetRateUSDWeek() {
-        assertThat(rate.getRate("USD", "week", "").isEmpty()).isFalse();
+        assertThat(rate.getRate("week", "", new String[]{"USD"}).isEmpty()).isFalse();
     }
 }
